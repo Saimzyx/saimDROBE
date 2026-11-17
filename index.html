@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Saimdrobe — modern everyday clothing for women, men and juniors.">
+    <link href="style.css" rel="stylesheet">
+    <link href="./dist/output.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@300..800&display=swap" rel="stylesheet">
+    <title>saimDROBE | Everyday clothing, reimagined</title>
+</head>
+<body class="bg-white text-[#111111] antialiased">
+    <div id="announcement" class="relative z-50 bg-black px-12 py-[9px] text-center text-[10px] font-medium uppercase tracking-[0.18em] text-white sm:text-[11px]">
+        Free delivery nationwide on orders above Rs. 4,999
+        <button id="close-announcement" type="button" aria-label="Close announcement" class="absolute right-4 top-1/2 -translate-y-1/2 p-1 text-white/80 transition hover:text-white">
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+    </div>
+    <header id="header" class="absolute left-0 right-0 top-[33px] z-40 border-b border-white/25 text-white transition-all duration-300">
+        <div class="mx-auto flex h-[72px] max-w-[1600px] items-center justify-between px-4 sm:px-7 lg:h-[82px] lg:px-12">
+            <button id="open-menu" type="button" aria-label="Open menu" aria-controls="mobile-menu" class="flex h-10 w-10 items-center justify-start lg:hidden">
+                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
+            </button>
+            <nav aria-label="Main navigation" class="hidden lg:block lg:w-1/3">
+                <ul id="navbar" class="flex items-center gap-8 text-[12px] font-semibold uppercase tracking-[0.13em]">
+                    <li><a href="#clothing" class="nav-link">Clothing</a></li>
+                    <li><a href="#denim" class="nav-link">Denim</a></li>
+                    <li><a href="#footwear" class="nav-link">Footwear</a></li>
+                    <li><a href="#new-arrivals" class="nav-link">New In</a></li>
+                    <li><a href="#sale" class="nav-link text-[#ff5a54]">Sale</a></li>
+                </ul>
+            </nav>
+            <a href="index.html" aria-label="Saimdrobe home" class="absolute left-1/2 -translate-x-1/2">
+                <img src="svgs/saimdrobe_logo_transparent.svg" alt="Saimdrobe" class="h-auto w-[134px] sm:w-[155px] lg:w-[180px]">
+            </a>
+            <div class="flex items-center justify-end gap-1 sm:gap-3 lg:w-1/3">
+                <button type="button" aria-label="Search" class="icon-button"><svg class="h-[21px] w-[21px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></svg></button>
+                <a href="#" aria-label="Account" class="icon-button hidden sm:flex"><svg class="h-[21px] w-[21px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.7-4 3.2-6 7-6s6.3 2 7 6"/></svg></a>
+                <a href="cart.html" aria-label="Shopping bag with 0 items" class="icon-button relative"><svg class="h-[22px] w-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 8h14l-1 12H6L5 8Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></svg><span id="cart-count" class="absolute right-0 top-0 flex h-4 min-w-4 items-center justify-center rounded-full bg-white px-1 text-[9px] font-bold text-black">0</span></a>
+            </div>
+        </div>
+    </header>
+    <div id="menu-overlay" class="pointer-events-none fixed inset-0 z-[60] bg-black/45 opacity-0 transition-opacity duration-300 lg:hidden"></div>
+    <aside id="mobile-menu" class="fixed left-0 top-0 z-[70] flex h-full w-[88%] max-w-[390px] -translate-x-full flex-col bg-white transition-transform duration-300 ease-out lg:hidden" aria-hidden="true">
+        <div class="flex h-[72px] items-center justify-between border-b border-black/10 px-5">
+            <span class="text-[20px] font-bold uppercase tracking-[-0.06em]">saimDROBE</span>
+            <button id="close-menu" type="button" aria-label="Close menu" class="p-2"><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 5l14 14M19 5 5 19"/></svg></button>
+        </div>
+        <nav class="flex-1 overflow-y-auto px-5 py-6">
+            <ul class="space-y-1 text-[25px] font-medium tracking-[-0.04em]">
+                <li><a href="#clothing" class="mobile-link block border-b border-black/10 py-4">Clothing</a></li>
+                <li><a href="#denim" class="mobile-link block border-b border-black/10 py-4">Denim</a></li>
+                <li><a href="#footwear" class="mobile-link block border-b border-black/10 py-4">Footwear</a></li>
+                <li><a href="#new-arrivals" class="mobile-link block border-b border-black/10 py-4">New Arrivals</a></li>
+                <li><a href="#sale" class="mobile-link block border-b border-black/10 py-4 text-[#e0362d]">Sale</a></li>
+            </ul>
+            <div class="mt-8 space-y-4 text-[12px] font-semibold uppercase tracking-[0.14em] text-black/60">
+                <a href="#" class="block">My Account</a><a href="#" class="block">Track My Order</a><a href="#" class="block">Store Locator</a>
+            </div>
+        </nav>
+    </aside>
+    <main>
+        <section id="hero" class="relative min-h-[720px] overflow-hidden bg-[#26221f] sm:min-h-[820px] lg:min-h-[calc(100vh-35px)]">
+            <img src="svgs/Men_Web_0cb72726-eac6-417c-a086-d902db00cc28.webp" alt="Saimdrobe men's fashion campaign" class="absolute inset-0 h-full w-full object-cover object-center">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-black/30"></div>
+            <div class="relative mx-auto flex min-h-[720px] max-w-[1600px] items-end justify-center px-5 pb-14 text-center text-white sm:min-h-[820px] sm:pb-20 lg:min-h-[calc(100vh-35px)] lg:justify-start lg:px-12 lg:pb-20 lg:text-left">
+                <div class="max-w-[650px]">
+                    <p class="mb-3 text-[11px] font-semibold uppercase tracking-[0.3em] text-white sm:text-[12px]">Autumn / Winter 2026</p>
+                    <h1 class="text-[52px] font-semibold leading-[0.92] tracking-[-0.065em] text-white sm:text-[75px] lg:text-[96px]">New<br class="hidden lg:block"> Perspective</h1>
+                    <p class="mx-auto mt-5 max-w-[470px] text-[13px] leading-6 text-white/85 sm:text-[15px] lg:mx-0">Relaxed layers, clean silhouettes and everyday essentials designed for the season ahead.</p>
+                    <div class="mt-7 flex flex-wrap justify-center gap-3 lg:justify-start"><a href="#clothing" class="button-light">Shop Clothing</a><a href="#footwear" class="button-outline-light">Shop Footwear</a></div>
+                </div>
+            </div>
+        </section>
+        <section id="shop-by-category" class="px-3 py-12 sm:px-5 sm:py-16 lg:px-8 lg:py-24">
+            <div class="mb-8 flex items-end justify-between lg:mb-12">
+                <div><p class="section-kicker">Explore the edit</p><h2 class="section-title">Shop by category</h2></div>
+                <a href="#new-arrivals" class="text-link hidden sm:inline-flex">View all</a>
+            </div>
+            <div class="grid gap-3 md:grid-cols-3 lg:gap-5">
+                <a id="denim" href="#new-arrivals" class="campaign-card group"><img src="svgs/baggy jeans.webp" alt="Baggy jeans collection" class="campaign-image"><div class="campaign-overlay"></div><div class="campaign-content"><p>Fits made for every day</p><h3>Denim</h3><span>Shop collection</span></div></a>
+                <a id="clothing" href="#new-arrivals" class="campaign-card group"><img src="svgs/slogan print tshirt.webp" alt="Slogan print T-shirt collection" class="campaign-image"><div class="campaign-overlay"></div><div class="campaign-content"><p>Fresh everyday staples</p><h3>Clothing</h3><span>Shop collection</span></div></a>
+                <a id="footwear" href="#new-arrivals" class="campaign-card group"><img src="svgs/shoes.webp" alt="Men's footwear collection" class="campaign-image"><div class="campaign-overlay"></div><div class="campaign-content"><p>Finish the look</p><h3>Footwear</h3><span>Shop collection</span></div></a>
+            </div>
+        </section>
+        <section id="new-arrivals" class="bg-[#f5f4f0] px-3 py-14 sm:px-5 sm:py-20 lg:px-8 lg:py-24">
+            <div class="mb-9 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between lg:mb-12">
+                <div><p class="section-kicker">Fresh this week</p><h2 class="section-title">New arrivals</h2></div>
+                <div class="flex gap-6 border-b border-black/20 text-[11px] font-semibold uppercase tracking-[0.16em]"><button type="button" class="product-tab active" data-filter="all">All</button><button type="button" class="product-tab" data-filter="clothing">Clothing</button><button type="button" class="product-tab" data-filter="footwear">Footwear</button></div>
+            </div>
+            <div id="product-grid" class="grid grid-cols-2 gap-x-3 gap-y-9 sm:gap-x-5 lg:grid-cols-4 lg:gap-x-6 lg:gap-y-14">
+                <article class="product-card" data-category="clothing"><div class="product-image-wrap"><span class="product-badge">New</span><button type="button" aria-label="Add Baggy Jeans to wishlist" class="wishlist-button"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg></button><img src="svgs/baggy jeans.webp" alt="Baggy jeans" class="product-image"><button type="button" class="quick-add">Quick add</button></div><div class="product-info"><h3>Baggy Jeans</h3><p>Rs. 5,490</p><div class="product-colors"><span class="bg-[#687a8c]"></span><span class="bg-[#252a31]"></span></div></div></article>
+                <article class="product-card" data-category="clothing"><div class="product-image-wrap"><span class="product-badge">New</span><button type="button" aria-label="Add Relaxed Fit Jeans to wishlist" class="wishlist-button"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg></button><img src="svgs/relaxed fit jeans.webp" alt="Relaxed fit jeans" class="product-image"><button type="button" class="quick-add">Quick add</button></div><div class="product-info"><h3>Relaxed Fit Jeans</h3><p>Rs. 4,990</p><div class="product-colors"><span class="bg-[#8395a3]"></span><span class="bg-[#414c55]"></span></div></div></article>
+                <article class="product-card" data-category="clothing"><div class="product-image-wrap"><span class="product-badge">Limited</span><button type="button" aria-label="Add Slogan Print T-shirt to wishlist" class="wishlist-button"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg></button><img src="svgs/slogan print tshirt.webp" alt="Slogan print T-shirt" class="product-image"><button type="button" class="quick-add">Quick add</button></div><div class="product-info"><h3>Slogan Print T-shirt</h3><p>Rs. 2,490</p><div class="product-colors"><span class="bg-[#d7d1c5]"></span><span class="bg-[#333335]"></span></div></div></article>
+                <article class="product-card" data-category="footwear"><div class="product-image-wrap"><span class="product-badge bg-[#df332b] text-white">Sale</span><button type="button" aria-label="Add Faux Leather Loafers to wishlist" class="wishlist-button"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg></button><img src="svgs/faux leather loafers.webp" alt="Faux leather loafers" class="product-image"><button type="button" class="quick-add">Quick add</button></div><div class="product-info"><h3>Faux Leather Loafers</h3><p><span class="mr-2 text-[#df332b]">Rs. 4,990</span><del class="text-black/40">Rs. 6,490</del></p><div class="product-colors"><span class="bg-[#29221e]"></span><span class="bg-[#6b4936]"></span></div></div></article>
+            </div>
+            <div class="mt-12 text-center lg:mt-16"><a href="#" class="button-dark">View all products</a></div>
+        </section>
+        <section id="sale" class="grid lg:grid-cols-2">
+            <div class="relative min-h-[560px] overflow-hidden sm:min-h-[680px] lg:min-h-[760px]"><img src="svgs/banner 3.webp" alt="New season Saimdrobe campaign" class="absolute inset-0 h-full w-full object-cover transition duration-700 hover:scale-[1.02]"></div>
+            <div class="flex min-h-[500px] items-center bg-[#b8463f] px-6 py-16 text-white sm:px-14 lg:min-h-[760px] lg:px-[10%]"><div class="max-w-[590px]"><p class="mb-5 text-[11px] font-semibold uppercase tracking-[0.28em] text-white/75">The layering guide</p><h2 class="text-[51px] font-semibold leading-[0.96] tracking-[-0.06em] text-white sm:text-[70px] lg:text-[82px]">Made for the in-between.</h2><p class="mt-7 max-w-[500px] text-[14px] leading-7 text-white/85 sm:text-[16px]">Transitional pieces that work harder. Wear them together, take them apart, and make them yours through every change in weather.</p><a href="#new-arrivals" class="mt-9 inline-flex border-b border-white pb-1 text-[11px] font-semibold uppercase tracking-[0.18em]">Discover the edit</a></div></div>
+        </section>
+        <section class="px-4 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-28">
+            <div class="mx-auto max-w-[920px] text-center"><p class="section-kicker">Saimdrobe community</p><h2 class="mt-3 text-[38px] font-semibold leading-[1.05] tracking-[-0.055em] sm:text-[55px] lg:text-[68px]">Wear it your way.</h2><p class="mx-auto mt-5 max-w-[600px] text-[13px] leading-6 text-black/60 sm:text-[15px]">Tag <strong class="font-semibold text-black">@saimdrobe</strong> for a chance to be featured in our community edit.</p></div>
+            <div class="mx-auto mt-10 grid max-w-[1500px] grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-4 lg:mt-14"><img src="svgs/faux leather chelsea boots.webp" alt="Faux leather Chelsea boots" class="aspect-square w-full object-cover"><img src="svgs/multi piece low top sneakers.webp" alt="Multi-piece low-top sneakers" class="aspect-square w-full object-cover"><img src="svgs/shoes.webp" alt="Saimdrobe footwear collection" class="aspect-square w-full object-cover"><img src="svgs/faux leather loafers.webp" alt="Faux leather loafers" class="aspect-square w-full object-cover"></div>
+        </section>
+        <section class="border-y border-black/10 bg-[#f4f0e9] px-5 py-16 sm:py-20">
+            <div class="mx-auto max-w-[680px] text-center"><p class="section-kicker">Stay in the loop</p><h2 class="mt-3 text-[36px] font-semibold leading-tight tracking-[-0.05em] sm:text-[50px]">Get 10% off your first order.</h2><p class="mx-auto mt-4 max-w-[520px] text-[13px] leading-6 text-black/60">Sign up for early access to new collections, private sales and stories from behind the scenes.</p><form class="mx-auto mt-8 flex max-w-[560px] border-b border-black" onsubmit="event.preventDefault()"><label for="email" class="sr-only">Email address</label><input id="email" type="email" placeholder="Enter your email address" class="min-w-0 flex-1 bg-transparent py-4 text-[13px] outline-none placeholder:text-black/45" required><button type="submit" class="px-2 text-[10px] font-bold uppercase tracking-[0.18em]">Subscribe</button></form></div>
+        </section>
+    </main>
+    <footer class="bg-[#121212] px-5 pb-8 pt-14 text-white sm:px-8 sm:pt-20 lg:px-12">
+        <div class="mx-auto grid max-w-[1500px] gap-12 border-b border-white/15 pb-14 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr] lg:gap-8 lg:pb-20">
+            <div><img src="svgs/saimdrobe_logo_transparent.svg" alt="Saimdrobe" class="h-auto w-[190px]"><p class="mt-5 max-w-[320px] text-[12px] leading-6 text-white/55">Everyday clothing with a clear point of view. Designed in Pakistan, made to move with you.</p><div class="mt-7 flex gap-5 text-[11px] font-semibold uppercase tracking-[0.15em]"><a href="#" class="footer-link">Instagram</a><a href="#" class="footer-link">Facebook</a><a href="#" class="footer-link">TikTok</a></div></div>
+            <div><h3 class="footer-title">Shop</h3><ul class="footer-list"><li><a href="#clothing">Clothing</a></li><li><a href="#denim">Denim</a></li><li><a href="#footwear">Footwear</a></li><li><a href="#new-arrivals">New Arrivals</a></li><li><a href="#sale">Sale</a></li></ul></div>
+            <div><h3 class="footer-title">Help</h3><ul class="footer-list"><li><a href="#">Contact Us</a></li><li><a href="#">Delivery & Returns</a></li><li><a href="#">Size Guide</a></li><li><a href="#">Track Order</a></li><li><a href="#">FAQs</a></li></ul></div>
+            <div><h3 class="footer-title">Company</h3><ul class="footer-list"><li><a href="#">Our Story</a></li><li><a href="#">Stores</a></li><li><a href="#">Careers</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms & Conditions</a></li></ul></div>
+        </div>
+        <div class="mx-auto flex max-w-[1500px] flex-col gap-4 pt-7 text-[9px] uppercase tracking-[0.14em] text-white/40 sm:flex-row sm:items-center sm:justify-between"><p>© 2026 Saimdrobe. All rights reserved.</p><p>Pakistan / PKR</p></div>
+    </footer>
+    <button id="back-to-top" type="button" aria-label="Back to top" class="fixed bottom-5 right-5 z-30 flex h-11 w-11 translate-y-5 items-center justify-center rounded-full bg-black text-white opacity-0 shadow-lg transition duration-300"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m5 15 7-7 7 7"/></svg></button>
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuOverlay = document.getElementById('menu-overlay');
+        const openMenuButton = document.getElementById('open-menu');
+        const closeMenuButton = document.getElementById('close-menu');
+        const announcement = document.getElementById('announcement');
+        const header = document.getElementById('header');
+        const backToTop = document.getElementById('back-to-top');
+        function openMenu() { mobileMenu.classList.remove('-translate-x-full'); menuOverlay.classList.remove('pointer-events-none', 'opacity-0'); document.body.classList.add('overflow-hidden'); mobileMenu.setAttribute('aria-hidden', 'false'); }
+        function closeMenu() { mobileMenu.classList.add('-translate-x-full'); menuOverlay.classList.add('pointer-events-none', 'opacity-0'); document.body.classList.remove('overflow-hidden'); mobileMenu.setAttribute('aria-hidden', 'true'); }
+        openMenuButton.addEventListener('click', openMenu);
+        closeMenuButton.addEventListener('click', closeMenu);
+        menuOverlay.addEventListener('click', closeMenu);
+        document.querySelectorAll('.mobile-link').forEach(link => link.addEventListener('click', closeMenu));
+        document.getElementById('close-announcement').addEventListener('click', () => { announcement.classList.add('hidden'); header.classList.add('top-0'); });
+        document.querySelectorAll('.wishlist-button').forEach(button => button.addEventListener('click', function () { this.classList.toggle('is-liked'); }));
+        document.querySelectorAll('.product-tab').forEach(tab => tab.addEventListener('click', function () { document.querySelectorAll('.product-tab').forEach(item => item.classList.remove('active')); this.classList.add('active'); const selectedCategory = this.dataset.filter; document.querySelectorAll('.product-card').forEach(card => card.classList.toggle('hidden', selectedCategory !== 'all' && card.dataset.category !== selectedCategory)); }));
+        window.addEventListener('scroll', function () { const isScrolled = window.scrollY > 60; header.classList.toggle('header-scrolled', isScrolled); backToTop.classList.toggle('opacity-0', !isScrolled); backToTop.classList.toggle('translate-y-5', !isScrolled); });
+        backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    </script>
+</body>
+</html>

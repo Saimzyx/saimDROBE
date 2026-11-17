@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Review your Saimdrobe shopping bag.">
+    <link href="style.css" rel="stylesheet">
+    <link href="./dist/output.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@300..800&display=swap" rel="stylesheet">
+    <title>Shopping Bag | saimDROBE</title>
+</head>
+
+<body class="bg-white text-[#111111] antialiased">
+    <div id="announcement" class="relative z-50 bg-black px-12 py-[9px] text-center text-[10px] font-medium uppercase tracking-[0.18em] text-white sm:text-[11px]">
+        Free delivery nationwide on orders above Rs. 4,999
+        <button id="close-announcement" type="button" aria-label="Close announcement" class="absolute right-4 top-1/2 -translate-y-1/2 p-1 text-white/80 transition hover:text-white">
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M6 6l12 12M18 6L6 18"/>
+            </svg>
+        </button>
+    </div>
+
+    <header class="relative z-40 border-b border-black/10 bg-white text-black">
+        <div class="mx-auto flex h-[72px] max-w-[1600px] items-center justify-between px-4 sm:px-7 lg:h-[82px] lg:px-12">
+            <button id="open-menu" type="button" aria-label="Open menu" aria-controls="mobile-menu" class="flex h-10 w-10 items-center justify-start lg:hidden">
+                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M3 7h18M3 12h18M3 17h18"/>
+                </svg>
+            </button>
+
+            <nav aria-label="Main navigation" class="hidden lg:block lg:w-1/3">
+                <ul class="flex items-center gap-8 text-[12px] font-semibold uppercase tracking-[0.13em]">
+                    <li><a href="index.html#clothing" class="nav-link">Clothing</a></li>
+                    <li><a href="index.html#denim" class="nav-link">Denim</a></li>
+                    <li><a href="index.html#footwear" class="nav-link">Footwear</a></li>
+                    <li><a href="index.html#new-arrivals" class="nav-link">New In</a></li>
+                    <li><a href="index.html#sale" class="nav-link text-[#d92720]">Sale</a></li>
+                </ul>
+            </nav>
+
+            <a href="index.html" aria-label="Saimdrobe home" class="absolute left-1/2 -translate-x-1/2">
+                <img src="svgs/saimdrobe_logo_transparent.svg" alt="Saimdrobe" class="h-auto w-[134px] invert sm:w-[155px] lg:w-[180px]">
+            </a>
+
+            <div class="flex items-center justify-end gap-1 sm:gap-3 lg:w-1/3">
+                <button type="button" aria-label="Search" class="icon-button">
+                    <svg class="h-[21px] w-[21px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <circle cx="11" cy="11" r="6.5"/>
+                        <path d="m16 16 4 4"/>
+                    </svg>
+                </button>
+                <a href="#" aria-label="Account" class="icon-button hidden sm:flex">
+                    <svg class="h-[21px] w-[21px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <circle cx="12" cy="8" r="3.5"/>
+                        <path d="M5 20c.7-4 3.2-6 7-6s6.3 2 7 6"/>
+                    </svg>
+                </a>
+                <a href="cart.html" aria-label="Shopping bag with 2 items" class="icon-button relative">
+                    <svg class="h-[22px] w-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M5 8h14l-1 12H6L5 8Z"/>
+                        <path d="M9 9V6a3 3 0 0 1 6 0v3"/>
+                    </svg>
+                    <span id="cart-count" class="absolute right-0 top-0 flex h-4 min-w-4 items-center justify-center rounded-full bg-black px-1 text-[9px] font-bold text-white">2</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div id="menu-overlay" class="pointer-events-none fixed inset-0 z-[60] bg-black/45 opacity-0 transition-opacity duration-300 lg:hidden"></div>
+    <aside id="mobile-menu" class="fixed left-0 top-0 z-[70] flex h-full w-[88%] max-w-[390px] -translate-x-full flex-col bg-white transition-transform duration-300 ease-out lg:hidden" aria-hidden="true">
+        <div class="flex h-[72px] items-center justify-between border-b border-black/10 px-5">
+            <span class="text-[20px] font-bold uppercase tracking-[-0.06em]">saimDROBE</span>
+            <button id="close-menu" type="button" aria-label="Close menu" class="p-2">
+                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M5 5l14 14M19 5 5 19"/>
+                </svg>
+            </button>
+        </div>
+        <nav class="flex-1 overflow-y-auto px-5 py-6">
+            <ul class="space-y-1 text-[25px] font-medium tracking-[-0.04em]">
+                <li><a href="index.html#clothing" class="mobile-link block border-b border-black/10 py-4">Clothing</a></li>
+                <li><a href="index.html#denim" class="mobile-link block border-b border-black/10 py-4">Denim</a></li>
+                <li><a href="index.html#footwear" class="mobile-link block border-b border-black/10 py-4">Footwear</a></li>
+                <li><a href="index.html#new-arrivals" class="mobile-link block border-b border-black/10 py-4">New Arrivals</a></li>
+                <li><a href="index.html#sale" class="mobile-link block border-b border-black/10 py-4 text-[#e0362d]">Sale</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="min-h-[65vh]">
+        <section class="border-b border-black/10 bg-[#f4f0e9] px-4 py-12 text-center sm:px-8 sm:py-16">
+            <p class="section-kicker">Your selection</p>
+            <h1 class="mt-2 text-[42px] font-semibold leading-none tracking-[-0.06em] sm:text-[58px] lg:text-[70px]">Shopping bag</h1>
+            <p class="mt-4 text-[12px] text-black/55"><span id="cart-heading-count">2 items</span> in your bag</p>
+        </section>
+
+        <section id="cart-section" class="mx-auto max-w-[1500px] px-4 py-10 sm:px-8 sm:py-14 lg:px-12 lg:py-20">
+            <div id="cart-content" class="grid items-start gap-12 lg:grid-cols-[minmax(0,1.65fr)_minmax(330px,.75fr)] lg:gap-16 xl:gap-24">
+                <div>
+                    <div class="hidden border-b border-black/15 pb-4 text-[9px] font-bold uppercase tracking-[0.16em] text-black/45 sm:grid sm:grid-cols-[minmax(0,1fr)_110px_110px]">
+                        <span>Product</span>
+                        <span class="text-center">Quantity</span>
+                        <span class="text-right">Total</span>
+                    </div>
+
+                    <div id="cart-items">
+                        <article class="cart-item grid grid-cols-[110px_minmax(0,1fr)] gap-4 border-b border-black/15 py-6 sm:grid-cols-[145px_minmax(0,1fr)_110px_110px] sm:gap-6 sm:py-8" data-product-id="baggy-jeans">
+                            <a href="#" class="block aspect-[4/5] overflow-hidden bg-[#f1efeb]">
+                                <img src="svgs/baggy jeans.webp" alt="Baggy Jeans" class="h-full w-full object-cover transition duration-500 hover:scale-[1.03]">
+                            </a>
+                            <div class="flex min-w-0 flex-col py-1">
+                                <p class="mb-2 text-[9px] font-semibold uppercase tracking-[0.16em] text-black/45">Denim</p>
+                                <a href="#" class="text-[14px] font-medium leading-5 sm:text-[16px]">Baggy Jeans</a>
+                                <p class="mt-2 text-[11px] text-black/55">Blue / 32</p>
+                                <p class="mt-3 text-[12px] font-medium sm:hidden">Rs. 5,490</p>
+                                <button type="button" class="remove-item mt-auto w-fit border-b border-black/40 pb-0.5 text-[9px] font-semibold uppercase tracking-[0.14em] text-black/55 transition hover:border-black hover:text-black" data-action="remove">Remove</button>
+                            </div>
+                            <div class="col-start-2 flex items-center justify-between sm:col-start-auto sm:justify-center">
+                                <span class="text-[9px] font-bold uppercase tracking-[0.14em] text-black/40 sm:hidden">Quantity</span>
+                                <div class="flex h-11 items-center border border-black/20" aria-label="Baggy Jeans quantity">
+                                    <button type="button" class="quantity-minus flex h-full w-10 items-center justify-center text-[17px] transition hover:bg-black hover:text-white" data-action="decrease" aria-label="Decrease quantity">−</button>
+                                    <input class="quantity-input h-full w-9 border-x border-black/10 bg-transparent text-center text-[11px] outline-none" type="number" value="1" min="1" aria-label="Quantity">
+                                    <button type="button" class="quantity-plus flex h-full w-10 items-center justify-center text-[17px] transition hover:bg-black hover:text-white" data-action="increase" aria-label="Increase quantity">+</button>
+                                </div>
+                            </div>
+                            <p class="hidden items-center justify-end text-[12px] font-medium sm:flex" data-item-total>Rs. 5,490</p>
+                        </article>
+
+                        <article class="cart-item grid grid-cols-[110px_minmax(0,1fr)] gap-4 border-b border-black/15 py-6 sm:grid-cols-[145px_minmax(0,1fr)_110px_110px] sm:gap-6 sm:py-8" data-product-id="faux-leather-loafers">
+                            <a href="#" class="block aspect-[4/5] overflow-hidden bg-[#f1efeb]">
+                                <img src="svgs/faux leather loafers.webp" alt="Faux Leather Loafers" class="h-full w-full object-cover transition duration-500 hover:scale-[1.03]">
+                            </a>
+                            <div class="flex min-w-0 flex-col py-1">
+                                <p class="mb-2 text-[9px] font-semibold uppercase tracking-[0.16em] text-black/45">Footwear</p>
+                                <a href="#" class="text-[14px] font-medium leading-5 sm:text-[16px]">Faux Leather Loafers</a>
+                                <p class="mt-2 text-[11px] text-black/55">Black / 42</p>
+                                <p class="mt-3 text-[12px] font-medium sm:hidden">Rs. 4,990</p>
+                                <button type="button" class="remove-item mt-auto w-fit border-b border-black/40 pb-0.5 text-[9px] font-semibold uppercase tracking-[0.14em] text-black/55 transition hover:border-black hover:text-black" data-action="remove">Remove</button>
+                            </div>
+                            <div class="col-start-2 flex items-center justify-between sm:col-start-auto sm:justify-center">
+                                <span class="text-[9px] font-bold uppercase tracking-[0.14em] text-black/40 sm:hidden">Quantity</span>
+                                <div class="flex h-11 items-center border border-black/20" aria-label="Faux Leather Loafers quantity">
+                                    <button type="button" class="quantity-minus flex h-full w-10 items-center justify-center text-[17px] transition hover:bg-black hover:text-white" data-action="decrease" aria-label="Decrease quantity">−</button>
+                                    <input class="quantity-input h-full w-9 border-x border-black/10 bg-transparent text-center text-[11px] outline-none" type="number" value="1" min="1" aria-label="Quantity">
+                                    <button type="button" class="quantity-plus flex h-full w-10 items-center justify-center text-[17px] transition hover:bg-black hover:text-white" data-action="increase" aria-label="Increase quantity">+</button>
+                                </div>
+                            </div>
+                            <p class="hidden items-center justify-end text-[12px] font-medium sm:flex" data-item-total>Rs. 4,990</p>
+                        </article>
+                    </div>
+
+                    <div class="mt-7 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                        <a href="index.html#new-arrivals" class="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.16em]">
+                            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="m15 5-7 7 7 7"/>
+                            </svg>
+                            Continue shopping
+                        </a>
+                        <button id="clear-cart" type="button" class="w-fit border-b border-black/40 pb-1 text-[9px] font-semibold uppercase tracking-[0.14em] text-black/50 transition hover:border-black hover:text-black">Clear bag</button>
+                    </div>
+                </div>
+
+                <aside class="sticky top-6 bg-[#f4f0e9] p-5 sm:p-8 lg:p-9">
+                    <h2 class="text-[25px] font-semibold tracking-[-0.045em]">Order summary</h2>
+
+                    <div class="mt-7 space-y-4 border-b border-black/15 pb-6 text-[12px]">
+                        <div class="flex items-center justify-between">
+                            <span class="text-black/60">Subtotal</span>
+                            <span id="cart-subtotal" class="font-medium">Rs. 10,480</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-black/60">Delivery</span>
+                            <span id="delivery-cost" class="font-medium">Free</span>
+                        </div>
+                        <div id="discount-row" class="hidden items-center justify-between text-[#d92720]">
+                            <span>Discount</span>
+                            <span id="discount-amount">− Rs. 0</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-end justify-between border-b border-black/15 py-6">
+                        <div>
+                            <p class="text-[13px] font-semibold">Total</p>
+                            <p class="mt-1 text-[9px] text-black/45">Taxes included</p>
+                        </div>
+                        <p id="cart-total" class="text-[20px] font-semibold tracking-[-0.03em]">Rs. 10,480</p>
+                    </div>
+
+                    <div class="py-6">
+                        <label for="promo-code" class="text-[9px] font-bold uppercase tracking-[0.16em]">Promo code</label>
+                        <div class="mt-3 flex border border-black/20 bg-white">
+                            <input id="promo-code" type="text" placeholder="Enter code" class="min-w-0 flex-1 px-4 py-3 text-[11px] uppercase outline-none placeholder:normal-case placeholder:text-black/35">
+                            <button id="apply-promo" type="button" class="border-l border-black/20 px-5 text-[9px] font-bold uppercase tracking-[0.14em] transition hover:bg-black hover:text-white">Apply</button>
+                        </div>
+                    </div>
+
+                    <button id="checkout-button" type="button" class="flex w-full items-center justify-center bg-black px-7 py-[18px] text-[10px] font-bold uppercase tracking-[0.18em] text-white transition hover:bg-[#343434]">Proceed to checkout</button>
+
+                    <div class="mt-6 grid gap-3 text-[10px] text-black/55">
+                        <p class="flex items-center gap-3">
+                            <svg class="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 7h11v10H3zM14 10h4l3 3v4h-7z"/><circle cx="7" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg>
+                            Free nationwide delivery over Rs. 4,999
+                        </p>
+                        <p class="flex items-center gap-3">
+                            <svg class="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3 5 6v5c0 5 3 8 7 10 4-2 7-5 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-5"/></svg>
+                            Secure and protected checkout
+                        </p>
+                    </div>
+                </aside>
+            </div>
+
+            <div id="empty-cart" class="hidden py-16 text-center sm:py-24">
+                <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-[#f4f0e9]">
+                    <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+                        <path d="M5 8h14l-1 12H6L5 8Z"/>
+                        <path d="M9 9V6a3 3 0 0 1 6 0v3"/>
+                    </svg>
+                </div>
+                <h2 class="mt-7 text-[32px] font-semibold tracking-[-0.05em] sm:text-[42px]">Your bag is empty</h2>
+                <p class="mx-auto mt-3 max-w-[420px] text-[12px] leading-6 text-black/55">Explore our latest arrivals and add your favourites to your shopping bag.</p>
+                <a href="index.html#new-arrivals" class="button-dark mt-7">Start shopping</a>
+            </div>
+        </section>
+
+        <section class="border-t border-black/10 bg-[#f8f7f4] px-4 py-12 sm:px-8 sm:py-16">
+            <div class="mx-auto grid max-w-[1200px] gap-8 text-center sm:grid-cols-3 sm:gap-4">
+                <div>
+                    <svg class="mx-auto h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 7h11v10H3zM14 10h4l3 3v4h-7z"/><circle cx="7" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg>
+                    <h3 class="mt-4 text-[10px] font-bold uppercase tracking-[0.17em]">Nationwide delivery</h3>
+                    <p class="mt-2 text-[11px] text-black/50">Delivered to your doorstep.</p>
+                </div>
+                <div>
+                    <svg class="mx-auto h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 12a8 8 0 1 0 3-6"/><path d="M4 4v6h6"/></svg>
+                    <h3 class="mt-4 text-[10px] font-bold uppercase tracking-[0.17em]">Easy exchanges</h3>
+                    <p class="mt-2 text-[11px] text-black/50">Simple exchange within 14 days.</p>
+                </div>
+                <div>
+                    <svg class="mx-auto h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 3 5 6v5c0 5 3 8 7 10 4-2 7-5 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-5"/></svg>
+                    <h3 class="mt-4 text-[10px] font-bold uppercase tracking-[0.17em]">Secure shopping</h3>
+                    <p class="mt-2 text-[11px] text-black/50">Your information stays protected.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-[#121212] px-5 pb-8 pt-14 text-white sm:px-8 sm:pt-20 lg:px-12">
+        <div class="mx-auto grid max-w-[1500px] gap-12 border-b border-white/15 pb-14 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr] lg:gap-8 lg:pb-20">
+            <div>
+                <img src="svgs/saimdrobe_logo_transparent.svg" alt="Saimdrobe" class="h-auto w-[190px]">
+                <p class="mt-5 max-w-[320px] text-[12px] leading-6 text-white/55">Everyday clothing with a clear point of view. Designed in Pakistan, made to move with you.</p>
+                <div class="mt-7 flex gap-5 text-[11px] font-semibold uppercase tracking-[0.15em]">
+                    <a href="#" class="footer-link">Instagram</a>
+                    <a href="#" class="footer-link">Facebook</a>
+                    <a href="#" class="footer-link">TikTok</a>
+                </div>
+            </div>
+            <div>
+                <h3 class="footer-title">Shop</h3>
+                <ul class="footer-list">
+                    <li><a href="index.html#clothing">Clothing</a></li>
+                    <li><a href="index.html#denim">Denim</a></li>
+                    <li><a href="index.html#footwear">Footwear</a></li>
+                    <li><a href="index.html#new-arrivals">New Arrivals</a></li>
+                    <li><a href="index.html#sale">Sale</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="footer-title">Help</h3>
+                <ul class="footer-list">
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Delivery & Returns</a></li>
+                    <li><a href="#">Size Guide</a></li>
+                    <li><a href="#">Track Order</a></li>
+                    <li><a href="#">FAQs</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="footer-title">Company</h3>
+                <ul class="footer-list">
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Stores</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="mx-auto flex max-w-[1500px] flex-col gap-4 pt-7 text-[9px] uppercase tracking-[0.14em] text-white/40 sm:flex-row sm:items-center sm:justify-between">
+            <p>© 2026 Saimdrobe. All rights reserved.</p>
+            <p>Pakistan / PKR</p>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuOverlay = document.getElementById('menu-overlay');
+
+        function openMenu() {
+            mobileMenu.classList.remove('-translate-x-full');
+            menuOverlay.classList.remove('pointer-events-none', 'opacity-0');
+            document.body.classList.add('overflow-hidden');
+            mobileMenu.setAttribute('aria-hidden', 'false');
+        }
+
+        function closeMenu() {
+            mobileMenu.classList.add('-translate-x-full');
+            menuOverlay.classList.add('pointer-events-none', 'opacity-0');
+            document.body.classList.remove('overflow-hidden');
+            mobileMenu.setAttribute('aria-hidden', 'true');
+        }
+
+        document.getElementById('open-menu').addEventListener('click', openMenu);
+        document.getElementById('close-menu').addEventListener('click', closeMenu);
+        menuOverlay.addEventListener('click', closeMenu);
+        document.querySelectorAll('.mobile-link').forEach(link => link.addEventListener('click', closeMenu));
+        document.getElementById('close-announcement').addEventListener('click', function () {
+            document.getElementById('announcement').classList.add('hidden');
+        });
+    </script>
+</body>
+
+</html>

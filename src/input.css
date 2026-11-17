@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@layer components {
+    .icon-button { @apply flex h-10 w-10 items-center justify-center transition-opacity hover:opacity-60; }
+    .button-light { @apply inline-flex min-w-[145px] items-center justify-center bg-white px-7 py-4 text-[10px] font-bold uppercase tracking-[0.17em] text-black transition hover:bg-black hover:text-white; }
+    .button-outline-light { @apply inline-flex min-w-[145px] items-center justify-center border border-white bg-transparent px-7 py-4 text-[10px] font-bold uppercase tracking-[0.17em] text-white transition hover:bg-white hover:text-black; }
+    .button-dark { @apply inline-flex items-center justify-center bg-black px-9 py-4 text-[10px] font-bold uppercase tracking-[0.18em] text-white transition hover:bg-[#343434]; }
+    .section-kicker { @apply text-[10px] font-semibold uppercase tracking-[0.24em] text-black/50; }
+    .section-title { @apply mt-2 text-[38px] font-semibold leading-none tracking-[-0.055em] sm:text-[50px] lg:text-[62px]; }
+    .text-link { @apply items-center border-b border-black pb-1 text-[10px] font-bold uppercase tracking-[0.16em] transition-opacity hover:opacity-50; }
+    .footer-title { @apply text-[10px] font-bold uppercase tracking-[0.18em] text-white; }
+}
